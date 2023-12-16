@@ -1,0 +1,16 @@
+.circle {
+    border: solid 1.5px grey;
+    border-radius: 100%;
+}
+.profileimg {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+}
+.border-top11 {
+    border-top: 2px solid #CDCDCD;
+}
+.icon-profile-menu {
+    width: 30px;
+    margin-bottom: 10px;
+}

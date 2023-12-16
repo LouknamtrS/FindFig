@@ -1,0 +1,23 @@
+nav {
+  display: flex;
+  border-bottom: 3px solid #f3f3f3;
+  background: #ffffff;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+.back-icons,.nav-icons{
+  width: 1.7em;
+  height: 1.7em;
+}
+.profile-container{
+  display: flex;
+  gap: 1em;
+}
+.topic{
+  font-size: 1.4em;
+}
+.profile-container, .back-icons{
+  margin: 15px;
+}

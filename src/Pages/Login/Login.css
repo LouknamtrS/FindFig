@@ -1,0 +1,85 @@
+
+#mainbody {
+    max-width: 980px;
+    margin: 0 auto;
+}
+.layoutmain{
+    padding: 10px;
+}
+.centerX {
+    justify-content: center;
+}
+.font08 {
+    font-size: 0.85em;
+}
+.centerY {
+    align-items: center;
+}
+.bold500 {
+    font-weight: 500;
+}
+.center {
+    text-align: center;
+}
+.flex {
+    display: flex;
+}
+
+.btn-menu-lopgin-l {
+    background: #4636fc;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border: 0;
+    font-size: 1em;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.btn-menu-lopgin-R {
+    background: #E1E1E1;
+    color: #4636fc;
+    padding: 10px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: 0;
+    font-size: 1em;
+}
+.box-input-address {
+    margin-bottom: 15px;
+}
+.input-login {
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 100px;
+    text-align: center;
+    border: 1.2px solid #999;
+    font-size: 1em;
+}
+.a-login {
+    color: #4636fc !important;
+    text-decoration: underline;
+    padding-bottom: 0px;
+    text-align: right;
+}
+
+a {
+    color: #4636fc;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a {
+    text-decoration: none;
+}

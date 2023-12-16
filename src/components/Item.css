@@ -1,0 +1,19 @@
+.item-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 10em;
+}
+.item{
+    display: flex;
+}
+.card{
+    max-width: 10em;
+}
+.item:hover{
+    transform: scale(1.01);
+    transition: all 0.5s ease;
+    transition: 0.6;
+}
+.thumb{
+    max-width: 10rem;
+}
