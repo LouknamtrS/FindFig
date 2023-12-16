@@ -1,0 +1,26 @@
+.nav-index {
+    position: relative;
+    margin-top: 30px;
+  }
+  
+  .active-nav {
+      background: #5C07F9;
+      color: #fff;
+  }
+  .nav-menu-item {
+      border: 1.2px solid #b8b8b8;
+      padding: 10px 25px;
+      width: 150px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      cursor: pointer;
+  }
+  .centerY {
+    align-items: center;
+  }
+  .icon-nav-index{
+    width: 2rem;
+  }

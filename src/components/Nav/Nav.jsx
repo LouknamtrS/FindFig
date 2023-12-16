@@ -8,12 +8,12 @@ const Nav = ({topic,back,account,cart}) => {
           <img className="back-icons" src={back} alt="Back" />
         </a>
       </div>
-      <div>
-        <h1 style={{marginLeft:"40px"}} className="topic">{topic}</h1>
+      <div style={{marginLeft:"40px"}} className="topic">{topic}
+        
 
       </div>
       <div className="profile-container">
-        <a href="">
+        <a href="/account">
         <img className="nav-icons" src={account} alt="Account" />
         </a>
         <a href="/cart">

@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-* {
-    font-family: 'Open Sans', sans-serif !important;
-}
-
 
 #main-product, #wrapper{
     position: relative;
@@ -13,6 +7,7 @@
     margin: 0 auto;
     padding-bottom: 30px;
     padding-top: 20px;
+    
 }
 
   @media screen and (min-width: 480px) {
@@ -51,6 +46,7 @@
     max-width: 100%; 
     max-height: 100%; 
   }
+
   .list-image:hover{
     opacity: 0.9;
     cursor: pointer;
@@ -58,14 +54,13 @@
     transform: scale(1.05);
   }
   .productdisplay-main-img{
-    max-width: 35em;
+    max-width: 33em;
     width: auto;
   }
 
   .detail{
     display: flex;
     flex-direction: column;
-    gap: 10px;
     position: relative;
     flex: 1;
   }
@@ -90,21 +85,20 @@
     background-color: rgba(0,0,0,.1);
     display: block;
     height: 3px;
-    margin: 1em 0;
+    margin-bottom: 1em;
     max-width: 30px;
     width: 100%;
   }
   .des{
     font-size: 1.2em;
     color: black;
-    padding-top: 1em;
-    line-height: 30px;
+
+
   }
   .tag-cate{
     border-bottom: 2px solid#ddd;
     border-top: 2px solid#ddd;
-    padding: 1em 0em 1em;
-    margin: 1em 0em 1em;
+ 
   }
   .tag-cate a, .tag-cate p{
     color: #8b8a8a;
@@ -121,7 +115,6 @@
   }
  .instock{
     color: green;
-
   } 
   .btn-add{
     background: #4636fc;
@@ -154,29 +147,26 @@
     transform
     600ms
     cubic-bezier(.3, .7, .4, 1);
-    cursor: pointer;
   }
   .btn-add:active span{
     transform: translateY(3px);
   }
   .btn-rm:hover span{
     color: #000000;
-    cursor: pointer;
     will-change: transform;
     transform: translateY(-2px);
     transition:
     transform
     600ms
     cubic-bezier(.3, .7, .4, 1);
-    cursor: pointer;
+
   }
   .btn-rm:active span{
     transform: translateY(3px);
   }
 
   .select-quantity-container {
-    padding-top: 1em;
-    padding-bottom: 20px;
+
     display: flex;
     flex-wrap: wrap;
   }
@@ -190,7 +180,7 @@ p.quantity {
   align-items: center;
   justify-content: center;
 } 
-  aside{
+  .detail{
     width: 40%;
     padding-left: 50px;
   }
@@ -221,20 +211,25 @@ p.quantity {
   width: 100%;
   position: relative;
 }
+.tab{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  background-color: #fcfcff;
+}
 
 
   
   .tabcontent{
     display: none;
-    padding: 5px 0px 10px;
+    padding: 0px 10px;
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
     max-height: 100%;
     overflow: auto;
-    margin-top: 20px;
+
     display: flex;
     flex-direction: row;
+    
   }
 /*table data about detail*/
   .table>tbody>tr>td{
@@ -302,7 +297,7 @@ p.quantity {
   /* CSS */
   .button-48 {
     appearance: none;
-    background-color: #FFFFFF;
+    background-color: transparent;
     border-width: 0;
     box-sizing: border-box;
     color: #000000;

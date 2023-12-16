@@ -8,16 +8,16 @@ nav {
   overflow: hidden;
 }
 .back-icons,.nav-icons{
-  width: 1.7em;
-  height: 1.7em;
+  width: 35px;
+  height: 35px;
 }
 .profile-container{
   display: flex;
   gap: 1em;
 }
 .topic{
-  font-size: 1.4em;
+  font-size: 30px;
 }
 .profile-container, .back-icons{
-  margin: 15px;
+  margin: 5px;
 }

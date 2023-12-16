@@ -40,7 +40,7 @@ const ProductDisplay = (props) => {
       <main id="main-product">
 
               <div className='row page-wrapper'>
-                <div div id="content" className="large-12 col" role="main">
+                <div div id="content-1" className="large-12 col" role="main">
                   <div className="productdisplay col ">
                   {/* Left detail - image display */}
                     <div className="productdisplay-left">
@@ -93,7 +93,7 @@ const ProductDisplay = (props) => {
                   </aside>
                   </div>
                   {/* other detail */}
-                  <section className="col">
+                  <section className="tab col">
                     <div class="tabs__line">
                       <div class="tabs__indicator" id="selectedIndicator"></div>
                     </div>
@@ -191,7 +191,7 @@ const ProductDisplay = (props) => {
 };
 
 
-window.addEventListener('load', function () {
+window.addEventListener('click', function () {
   const ProductImg = document.getElementById("product-img");
   const SmallImg = document.getElementsByClassName("list-image");
   for (let i = 0; i < SmallImg.length; i++) {
@@ -201,6 +201,18 @@ window.addEventListener('load', function () {
 }});
 
 
+window.addEventListener('load',function(){
+  var i, tabContent, tablinks;
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[0].classList.add("active");
+    tablinks[1].classList.remove("active");
+  }
+  tabContent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[1].style.display = "none";
+  }
+})
 
 //section tab
 function openTab(evt, tabName) {

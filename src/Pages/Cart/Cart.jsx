@@ -15,47 +15,10 @@ function Cart(){
             <main id="mainbody">
                 <div className="layoutmain">
                 <div id="content" className="large-12 col" role="main"></div>
-                <div className="box-address">
-                    <div className="flex-1">
-                        <div className="flex centerY">
-                            <img className="icon-address" src="https://cdn.discordapp.com/attachments/787359617280770051/1184556736317763604/location.png.png?ex=658c676d&is=6579f26d&hm=c13c3501c698cce5a632280463edf40b70dd1034aeaf6fbcc0a37df06459dc93&" alt=""/>
-                            <div style={{marginLeft:"7px"}}>delivery address</div>
-                        </div>
-                        <div style={{height: "10px"}}></div>
-                        <div className="box-sud-address">
-                            <div style={{fontWeight:"bold"}}>เลือกที่อยู่จัดส่ง</div>
-                        </div>
-                        <div style={{height:"10px"}}></div>
-                    </div>
-                    <div>
-                        <img className="chevron-right-cart" src="https://cdn.discordapp.com/attachments/787359617280770051/1184557596636618873/chevron-right.png?ex=658c683b&is=6579f33b&hm=83d307843e0a33e051089b25d1321792b7201e5364e40da097ac66b8ed7d55f1&" alt=""/>
-                    </div>
-                </div>
                 <div style={{height:"20px"}}></div>
                 <div>Item</div>
                 <div style={{height:"15px"}}></div>
-                <div class="box-item-cart">
-                    <img className="item-cart" src="https://looperr.b-cdn.net/s5463/s5463%208Dec23/20231208-1263.jpg" alt=""/>
-                    <div>
-                        <div className="h-item-cart">tops</div>
-                        <div style={{height:"10px"}}></div>
-                        <div>Size : XL</div>
-                        <div style={{height: "5px"}}></div>
-                        <div className="h-item-cart">THB 400 </div>
-                        <div style={{height: "5px"}}></div>
-                    </div>
-                </div>
-                <div class="box-item-cart">
-                    <img className="item-cart" src="https://looperr.b-cdn.net/s5463/s5463%208Dec23/20231208-1263.jpg" alt=""/>
-                    <div>
-                        <div className="h-item-cart">tops</div>
-                        <div style={{height:"10px"}}></div>
-                        <div>Size : XL</div>
-                        <div style={{height: "5px"}}></div>
-                        <div className="h-item-cart">THB 400 </div>
-                        <div style={{height: "5px"}}></div>
-                    </div>
-                </div>
+
                 <div class="box-item-cart">
                     <img className="item-cart" src="https://looperr.b-cdn.net/s5463/s5463%208Dec23/20231208-1263.jpg" alt=""/>
                     <div>

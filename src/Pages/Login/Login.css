@@ -74,12 +74,13 @@ button, input, optgroup, select, textarea {
 }
 
 a {
-    color: #4636fc;
     text-decoration: none;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
+
 }
 
-a {
+a:visited {
     text-decoration: none;
+    color: black;
 }

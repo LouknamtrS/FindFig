@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb+srv://tsittidet:thereallalune@findfigdb.4gxdoii.mongodb.net/')
 .then(()=>{
     console.log('mongodb connected');
@@ -584,6 +585,8 @@ data_product =[{
 'https://thumbs-eu-west-1.myalbum.io/photo/1k0/bba17252-543a-4ada-9819-20203ce451e8.jpg']
 }
 ]
-collection.insertMany(data_product)
-
+data_product.forEach((status) => {
+    const newData = new collection((status));
+    newData.save();
+  })
 //insert mock data
