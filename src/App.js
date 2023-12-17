@@ -11,9 +11,10 @@ import Signup from "./Pages/Signup/Signup";
 import Checkout from "./Pages/Checkout/Checkout";
 import Account from "./Pages/Account/Account";
 import Showcase from "./Pages/Showcase/Showcase";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
-
+  const login = window.localStorage.getItem("isLogedIn") === "true";
   return (
     <div>
       <BrowserRouter>
@@ -21,13 +22,13 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/products/:productID" element={<Product />} />
           <Route path="/Sell" element={<SellPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={login?<Home/>:<Login />} />
             <Route path="/register" element={<Signup />} />
           <Route path="/ordercomplete" element={<OrderComplete />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/account" element={<Account/>}/>
           <Route path="/showcase" element={<Showcase/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </div>

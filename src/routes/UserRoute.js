@@ -29,6 +29,8 @@ router.route("/register").post((req, res) => {
         .then(user => res.json(user))
         .catch(err => res.json(err))
     }).catch(err => console.log(err.message))
+
+
 });
 
 router.route("/login").post((req,res)=>{
@@ -51,4 +53,10 @@ router.route("/login").post((req,res)=>{
         
     })
 })
+router.route("/getprofile").get((req,res)=>{
+    UserModel.find()
+    .then(user=> res.json(user))
+    .catch(err=> res.json(err))
+})
+
 module.exports = router;

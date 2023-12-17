@@ -2,13 +2,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const router = require("./routes/SellerRoute");
 const userRouter = require('./routes/UserRoute');
+const productRouter = require('./routes/FigureRoute');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-
+dotenv.config()
 
 app.use(express.json());
 
@@ -23,6 +25,7 @@ app.use(function(req, res, next) {
 
 app.use("/", router);
 app.use("/",userRouter);
+app.use("/",productRouter);
 
 require('dotenv').config();
 const corsOptions = {
@@ -31,7 +34,7 @@ const corsOptions = {
   };
   app.use(cors(corsOptions));
 app.use(cookieParser());
-mongoose.connect('mongodb+srv://tsittidet:thereallalune@findfigdb.4gxdoii.mongodb.net/', {
+mongoose.connect('mongodb+srv://tsittidet:thereallalune@findfigdb.4gxdoii.mongodb.net/FindFigDB', {
     useNewUrlParser: true
 });
 

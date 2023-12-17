@@ -3,16 +3,29 @@ import { ShopContext } from "../ShopContext/ShopContext";
 import { useParams } from "react-router-dom";
 import ProductDisplay from "../../Pages/ProductDisplay/ProductDisplay";
 
-const Product = () =>{
-  const {data_product}= useContext(ShopContext);
-  const {productID} = useParams();
-  const product = data_product.find((e)=>e.id === Number(productID)); 
-  console.log("Product:", product);  
+const Product = () => {
+  const { productID } = useParams();
+  const { data_products, isLoading } = useContext(ShopContext);
+  
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  
+  const product = data_products.find((e) => e.id === String(productID));
+  
+  // Rest of your code...
+  
+
+  console.log("Data Products:", data_products);
+
   console.log("Product ID:", productID);
-  return(
+  console.log("Product:", product);
+
+  return (
     <div>
-      <ProductDisplay product = {product}/>
+        <ProductDisplay product={product} />
     </div>
-  )
-}
-export default Product
+  );
+};
+
+export default Product;

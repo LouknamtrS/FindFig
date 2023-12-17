@@ -4,6 +4,7 @@ import { useEffect,useState } from "react";
 import "./Sell.css";
 import Nav from "../../components/Nav/Nav";
 import Popup from "../../components/Popup";
+import ButtonMenu from "../../components/ButtonList/ButtonList";
 
 function SellPage(){
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -66,7 +67,8 @@ function SellPage(){
                 cart="https://cdn.discordapp.com/attachments/787359617280770051/1183513819981549639/2.png?ex=65889c23&is=65762723&hm=db11b00f36b56189d04437dad86744125c2456a9d7e4b7e95cc617f33e2e8efb&"
                 ></Nav>
             </header>
-            <main id="main">
+ 
+            <main id="main-sell">
                 <div className="row page-wrapper">
                     <div id="content" className="large-12 col" role="main">
                         <header className="entry-header text-center">
@@ -183,7 +185,7 @@ function SellPage(){
                                                 </div>
                                             </div> */}
                                         </div>
-                                        <div className="checkbox-wrapper-42">
+                                        <div className="checkbox-wrapper-42 consent-check">
                                             <input id="cbx-42" type="checkbox" required/>
                                             <label className="cbx" htmlFor="cbx-42"></label>
                                             <label className="lbl" htmlFor="cbx-42">I consent to having FindFig collect my Name and Email(s)</label>

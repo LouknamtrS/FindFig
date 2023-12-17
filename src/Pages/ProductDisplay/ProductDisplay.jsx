@@ -4,10 +4,9 @@ import "./ProductDisplay.css";
 import Nav from "../../components/Nav/Nav";
 
 
-const ProductDisplay = (props) => {
-    //fetch data
-  const {product} = props;
+const ProductDisplay = ({ product }) => { // Destructure directly
   const [quantity, setQuantity] = useState(1);
+  
   const handleAddQuantity = () => {
     if (quantity < product.stock) {
       setQuantity(quantity + 1);
@@ -20,12 +19,10 @@ const ProductDisplay = (props) => {
     }
   };
 
-  //if there are error occur
-  console.log(product);
-    if (!product) {
-    return <div>Product not found</div>; // or some other fallback UI
-    }
-   
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+  
   return (
     <div id="wrapper">
             <header>
@@ -94,13 +91,13 @@ const ProductDisplay = (props) => {
                   </div>
                   {/* other detail */}
                   <section className="tab col">
-                    <div class="tabs__line">
-                      <div class="tabs__indicator" id="selectedIndicator"></div>
+                    <div className="tabs__line">
+                      <div className="tabs__indicator" id="selectedIndicator"></div>
                     </div>
                     <div className="tab" id="tab-container">
                       <div className="tabs-titles">
                           
-                        <button className="tablinks button-48" onClick={(event) => openTab(event, 'about')}><span>ABOUT THIS ITEM</span></button>
+                        <button className="tablinks button-48" onClick={(event) => openTab(event, 'about') }><span>ABOUT THIS ITEM</span></button>
                         <button className="tablinks button-48" onClick={(event) => openTab(event, 'grading')}><span>GRADING SCALE</span></button>
                       </div> 
                     </div>
@@ -201,18 +198,7 @@ window.addEventListener('click', function () {
 }});
 
 
-window.addEventListener('load',function(){
-  var i, tabContent, tablinks;
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[0].classList.add("active");
-    tablinks[1].classList.remove("active");
-  }
-  tabContent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabContent.length; i++) {
-    tabContent[1].style.display = "none";
-  }
-})
+
 
 //section tab
 function openTab(evt, tabName) {
@@ -221,6 +207,7 @@ function openTab(evt, tabName) {
   tabContent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabContent.length; i++) {
     tabContent[i].style.display = "none";
+
   }
   // Remove the "active" class from all tab links
   tablinks = document.getElementsByClassName("tablinks");
@@ -231,6 +218,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   // Add the "active" class to the clicked tab link
   evt.currentTarget.classList.add("active");
+
 }
 
 

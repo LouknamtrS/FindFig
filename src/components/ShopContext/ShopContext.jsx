@@ -1,11 +1,23 @@
 import React, {createContext} from "react";
-import data_product from "../../db/figuredb";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) =>{
-    const contextValue = {data_product};
-    console.log("Data Product:", data_product);
+const [data_products, getDataproduct] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/getdata')
+      .then((response) => {
+        getDataproduct(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+    const contextValue = {data_products};
+    console.log("Data Product:", data_products);
     return(
         <ShopContext.Provider value={contextValue}>
             {props.children}

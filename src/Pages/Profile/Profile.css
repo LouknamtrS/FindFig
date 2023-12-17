@@ -1,0 +1,27 @@
+#main-profile, #wrapper{
+    position: relative;
+}
+#main-profile{
+    max-width: 1050px;
+    margin: 0 auto;
+}
+.page-wrapper{
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.myprofile{
+    max-width: 100px;
+   
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+}
+.myprofile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/* Adjust as needed */
+  }
+  

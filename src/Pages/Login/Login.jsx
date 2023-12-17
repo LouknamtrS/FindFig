@@ -13,8 +13,8 @@ function Login() {
   const navigate = useNavigate()
 
   axios.defaults.withCredentials= true;
-  
   const handleSubmit=(e)=>{
+    window.localStorage.setItem("isLogedIn",true)
     e.preventDefault()
     axios.post('http://localhost:5000/login',{email,password})
     .then(response => {
@@ -22,13 +22,28 @@ function Login() {
       if(response.data === "Success"){
         navigate('/');
       }
-      
+      console.log(email)
   })
   .catch(error => {
       console.error(error);
   });
   }
 
+// Example login function
+const handleLogin = async (email, password) => {
+  try {
+    const response = await axios.post('http://localhost:5000/login', { email, password });
+    const { token } = response.data;
+
+    // Store the token in localStorage
+    window.localStorage.setItem('authToken', token);
+
+    // Redirect or update state to indicate a successful login
+    // For example, navigate('/')
+  } catch (error) {
+    console.error('Login failed', error);
+  }
+};
 
   return (
     <div id='wrapper'>
