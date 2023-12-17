@@ -119,7 +119,7 @@ const Logout=()=>{
           cart="https://cdn.discordapp.com/attachments/787359617280770051/1183513819981549639/2.png?ex=65889c23&is=65762723&hm=db11b00f36b56189d04437dad86744125c2456a9d7e4b7e95cc617f33e2e8efb&"
         ></Nav>
       </header>
-      <div className="row page-wrapper flex" style={{ maxWidth: '1400px' }}>
+      <div className=" page-wrapper flex" style={{ maxWidth: '100%',minWidth: '10%' }}>
 
         <aside className="side-bar">
           <ButtonMenu
@@ -132,14 +132,14 @@ const Logout=()=>{
           ))}
         </aside>
         <div
-          style={{ justifyContent: 'space-between', maxWidth: '1000px', minWidth: '1000px', paddingBottom: '30px', paddingTop: '20px' }}
+          style={{ justifyContent: 'center', maxWidth: '80%', minWidth: '30%', paddingBottom: '30px', paddingTop: '20px'}}
           id="content"
           className="large-12"
           role="main"
         >
-          <form className="" role="search">
+          <form className="" role="search" style={{ maxWidth: '80%', minWidth: '30%', paddingBottom: '30px', paddingTop: '20px' }}>
             <input
-              className="search-bar"
+              className="search-bar" style={{  width: '100%', justifyContent: 'center'}}
               value={searchItem}
               type="text"
               placeholder="find your favorite figure"
@@ -148,9 +148,9 @@ const Logout=()=>{
             />
           </form>
             
-          <div className="flex flex-col">
+          <div className="flex flex-col" >
             <p>All Item</p>
-            <div className="flex all-figure">
+            <div className="flex all-figure" >
               {filteredFigure.map((e) => (
                 <Item key={e.id} name={e.name} id={e.id} price={e.price} thumb={e.imgs && e.imgs.length > 0 ? e.imgs[0] : ''} />
               ))}
