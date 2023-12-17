@@ -12,6 +12,7 @@ import Checkout from "./Pages/Checkout/Checkout";
 import Account from "./Pages/Account/Account";
 import Showcase from "./Pages/Showcase/Showcase";
 import Profile from "./Pages/Profile/Profile";
+import Address from "./Pages/Address/Address";
 
 function App() {
   const login = window.localStorage.getItem("isLogedIn") === "true";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/showcase" element={<Showcase/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/address" element={<Address/>}/>
         </Routes>
       </BrowserRouter>
     </div>
