@@ -5,6 +5,19 @@ import "./Account.css";
 import Nav from "../../components/Nav/Nav";
 
 function Account(){
+    axios.post('http://localhost:5000/userData', { token: window.localStorage.getItem("token") })
+    .then((res) => {
+      const data = res.data; // Use res.data instead of res.json()
+      console.log(data, 'userData');
+
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  
+
+
+
     return(
         <div id="wrapper">
              <header id="header">

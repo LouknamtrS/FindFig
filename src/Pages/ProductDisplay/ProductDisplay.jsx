@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect,useState } from "react";
 import "./ProductDisplay.css";
 import Nav from "../../components/Nav/Nav";
+import { ShopContext } from "../../components/ShopContext/ShopContext";
 
 
 const ProductDisplay = ({ product }) => { // Destructure directly
+  const {addToCart} = useContext(ShopContext);
   const [quantity, setQuantity] = useState(1);
   
   const handleAddQuantity = () => {
@@ -12,13 +14,14 @@ const ProductDisplay = ({ product }) => { // Destructure directly
       setQuantity(quantity + 1);
     }
   };
+  
 
   const handleRemoveQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
-
+  
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -84,7 +87,7 @@ const ProductDisplay = ({ product }) => { // Destructure directly
                         <button className="btn-add" onClick={handleAddQuantity}><span className="text">+</span></button>
                       </div>
                       <div className="button-add-to-cart">
-                        <button className="button-28" type="submit">Add to cart</button>
+                        <button className="button-28" type="submit" onClick={()=>{addToCart(product.id)}}>Add to cart</button>
                       </div>
                     </div>
                   </aside>

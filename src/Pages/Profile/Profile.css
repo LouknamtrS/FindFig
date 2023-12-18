@@ -1,14 +1,12 @@
 #main-profile, #wrapper{
     position: relative;
+    max-width: 100%;
 }
 #main-profile{
-    max-width: 1050px;
+    max-width: 70%;
     margin: 0 auto;
 }
-.page-wrapper{
-    padding-bottom: 30px;
-    padding-top: 20px;
-}
+
 
 .myprofile{
     max-width: 100px;
@@ -24,4 +22,3 @@
     align-items: center;
 /* Adjust as needed */
   }
-  

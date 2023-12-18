@@ -15,7 +15,7 @@ import Profile from "./Pages/Profile/Profile";
 import Address from "./Pages/Address/Address";
 
 function App() {
-  const login = window.localStorage.getItem("isLogedIn") === "true";
+  const IsLoggedIn = window.localStorage.getItem("IsloggedIn")
   return (
     <div>
       <BrowserRouter>
@@ -23,13 +23,13 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/products/:productID" element={<Product />} />
           <Route path="/Sell" element={<SellPage />} />
-          <Route path="/login" element={login?<Home/>:<Login />} />
+          <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Signup />} />
           <Route path="/ordercomplete" element={<OrderComplete />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/showcase" element={<Showcase/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={IsLoggedIn=="true"?<Profile/>:<Login/>}/>
           <Route path="/address" element={<Address/>}/>
         </Routes>
       </BrowserRouter>

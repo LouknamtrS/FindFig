@@ -8,42 +8,35 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login() {
+
+  
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
 
-  axios.defaults.withCredentials= true;
   const handleSubmit=(e)=>{
-    window.localStorage.setItem("isLogedIn",true)
-    e.preventDefault()
-    axios.post('http://localhost:5000/login',{email,password})
-    .then(response => {
-      console.log(response);
-      if(response.data === "Success"){
-        navigate('/');
-      }
-      console.log(email)
-  })
-  .catch(error => {
-      console.error(error);
-  });
+    e.preventDefault();
+
+    axios.post('http://localhost:5000/login-user', { email, password })
+      .then((res) => {
+        const data = res.data; // Use res.data instead of res.json()
+        console.log(data, 'user register');
+        console.log(password);
+  
+        if (data.status === 'ok') {
+          alert("login successful");
+          window.localStorage.setItem("token", data.data);
+          window.localStorage.setItem("IsloggedIn",true)
+          window.location.href="/"; 
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
-// Example login function
-const handleLogin = async (email, password) => {
-  try {
-    const response = await axios.post('http://localhost:5000/login', { email, password });
-    const { token } = response.data;
 
-    // Store the token in localStorage
-    window.localStorage.setItem('authToken', token);
 
-    // Redirect or update state to indicate a successful login
-    // For example, navigate('/')
-  } catch (error) {
-    console.error('Login failed', error);
-  }
-};
 
   return (
     <div id='wrapper'>

@@ -96,7 +96,7 @@ h5 {
     border-radius: 50px;
     border: 1px solid#ddd;
     padding: 15px 0px;
-    max-width: 500px;
+    max-width: 100%;
     width: 500px;
 }
 
@@ -147,7 +147,7 @@ h5 {
     width: 330px;
 }
 .large-box input{
-    max-width: 1050px;
+    max-width: 100%;
     width: 100%;
 }
 .clone-form{
