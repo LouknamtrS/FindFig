@@ -1,8 +1,41 @@
 import React from "react";
 import './Cart.css';
 import Nav from "../../components/Nav/Nav";
+import CartItems from "../../components/CartItems/CartItems";
+import UserAdress from "../../components/Address-comp/UserAddress";
+import { useState,useEffect } from "react";
+import AddAdress from "../../components/icon/AddAddress";
+
 
 function Cart(){
+    const [addPopUp, setAddPopUp] = useState(false);
+    const [userData, setUserData] = useState();
+    const [receiverName, setReceiverName] = useState();
+    const [tel, setTel] = useState();
+    const [address, setAddress] = useState();
+    const userEmail = window.localStorage.getItem("userEmail");
+    useEffect(() => {
+        fetch("http://localhost:5000/getUserForAddress", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                
+            },
+            body: JSON.stringify({
+                email: userEmail
+            })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.UserAddresses);
+            setReceiverName(data.UserAddresses.receiverName);
+            setTel(data.UserAddresses.tel);
+            setAddress(data.UserAddresses.address);            
+            setUserData(data);
+        })
+    }, []);
     return(
         <div id="wrapper">
              <header id="header">
@@ -14,72 +47,27 @@ function Cart(){
             </header>
             <main id="mainbody">
                 <div className="layoutmain">
-                <div id="content" className="large-12 col" role="main"></div>
-                <div style={{height:"20px"}}></div>
-                <div>Item</div>
-                <div style={{height:"15px"}}></div>
-
-                <div class="box-item-cart">
-                    <img className="item-cart" src="https://looperr.b-cdn.net/s5463/s5463%208Dec23/20231208-1263.jpg" alt=""/>
-                    <div>
-                        <div className="h-item-cart">tops</div>
-                        <div style={{height:"10px"}}></div>
-                        <div>Size : XL</div>
-                        <div style={{height: "5px"}}></div>
-                        <div className="h-item-cart">THB 400 </div>
-                        <div style={{height: "5px"}}></div>
+                <div id="content" className="large-12" role="main"></div>
+                { 
+                    receiverName != undefined ? 
+                        <UserAdress 
+                            receiverName={receiverName} 
+                            tel={tel} 
+                            address={address}
+                        ></UserAdress> 
+                    : 
+                    <div className="warning-zone">
+                        <button className="add-address-from-cart" onClick={() => setAddPopUp(true)}>
+                            <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185630381899255951/Plus-icon.png?ex=65904f56&is=657dda56&hm=1bac260712735a13c2436dd6984a82f3b322fd79916f71d75680bf8e2cf6c1c9&"></img>
+                            Add Address
+                        </button>
                     </div>
-                </div>
-                <div class="box-item-cart">
-                    <img className="item-cart" src="https://looperr.b-cdn.net/s5463/s5463%208Dec23/20231208-1263.jpg" alt=""/>
-                    <div>
-                        <div className="h-item-cart">tops</div>
-                        <div style={{height:"10px"}}></div>
-                        <div>Size : XL</div>
-                        <div style={{height: "5px"}}></div>
-                        <div className="h-item-cart">THB 400 </div>
-                        <div style={{height: "5px"}}></div>
-                    </div>
-                </div>
-                <div style={{height:"15px"}}></div>
-                <div className="bold500">order summary</div>
-                <div style={{height:"10px"}}></div>
-                <div className="summary-box">
-                    <div className="box-pice">
-                        <div>
-                            <div className="flex">
-                            <div className="flex-1">tops, timberland</div>
-                            <div>400 THB</div>
-                        </div>
-                        <div style={{height:"10px"}}></div>
-                    </div>
-                    <div style={{height:"10px"}}></div>
-                    </div>
-                    <div className="box-pice">
-                        {/* <div className="flex colorsale">
-                            <div className="flex-1">discount :  </div>
-                            <div>-0 THB</div>
-                        </div> */}
-                        <div style={{height:"10px"}}></div>
-                        <div className="flex">
-                            <div className="flex-1">shipping fee</div>
-                            <div>50 THB</div>
-                        </div>
-                    </div>
-                    <div style={{height:"10px"}}></div>
-                    <div className="box-sale-1 bold500">
-                         <div className="flex">
-                            <div className="flex-1">Total</div>
-                            <div>750 THB</div>
-                        </div>
-                    </div>
-                </div>
-                <div style={{height:"150px"}}></div>
-                <div className="boxcart">
-                    <a href="/checkout"><button className="btn-cart button-28" type="button">check out</button></a>
-                </div>
+                }
+                <CartItems></CartItems>
                 </div>
             </main>
+            <AddAdress trigger={addPopUp} setTrigger={setAddPopUp}></AddAdress>
+    
         </div>
 
 

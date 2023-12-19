@@ -3,15 +3,18 @@
 * {
     font-family: 'Prompt', sans-serif !important;
 }
-
-.content-wrappper {
+#mainbody-address{
+    max-width: 100%;
+}
+.address-wrapper .content-wrappper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     width: 100%;
     height: 100%;
 }
 
-.sidebar-content {
+.address-wrapper .content-wrappper .sidebar-content {
     display: flex;
     flex-direction: column;
     width: 22%;
@@ -19,7 +22,7 @@
     
 }
 
-.sidebtn {
+.address-wrapper .content-wrappper .sidebtn {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -33,33 +36,33 @@
     padding: 2% 1% 2%;
 }
 
-.home {
+.address-wrapper .content-wrappper .sidebar-content .sidebtn.home {
     margin: 10% 20% 1% 20%;
     
 }
 
-.showcase {
+.address-wrapper .content-wrappper .sidebar-content .sidebtn.showcase {
     margin: 3% 20% 3% 20%;
     
 }
 
-.sell {
+.address-wrapper .content-wrappper .sidebar-content .sidebtn.sell {
     margin: 1% 20% 10% 20%;
     
 }
 
-img {
+.sidebar-content .sidebtn img {
     margin-left: 10%;
     margin-right: 5%;
 }
 
-.main-content {
+.content-wrappper .main-content {
     width: 56%;
     background-color: rgb(255, 255, 255);
     
 }
 
-.main-header {
+.address-wrapper .content-wrappper .main-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -68,11 +71,11 @@ img {
     margin: 1% 0 1% 0;
 }
 
-.add-btn {
+.address-wrapper .content-wrappper .main-header .add-btn {
     
     border: 0;
     border-radius: 5px;
-    background-color: rgb(174, 206, 255);
+    background-color: #4636FC;
     font-size: 20px;
     font-weight: bold;
     color: rgb(255, 255, 255);
@@ -82,99 +85,17 @@ img {
     
 }
 
-.add-btn img {
+.address-wrapper .content-wrappper .main-header .add-btn img {
     width: 25px;
     height: 25px;
 }
 
-.line {
+.address-wrapper .content-wrappper .main-content .line {
     width: 100%;
     height: 2px;
-    background-color: rgb(148, 148, 148);
 }
 
-/* สำหรับเอาไปทำ component */
-.adress-content {
-    display: flex;
-    flex-direction: column;
-    margin: 3% 0 3%;
-    font-size: 20px;
-}
-
-.address-field {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.address-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-info {
-    display: flex;
-    flex-direction: row;
-}
-
-.receiver-name {
-    border-right: 2px solid rgb(148, 148, 148);
-    padding: 1% 15% 1% 0;
-}
-
-.tel {
-    padding: 1% 0 1% 5%;
-}
-
-.user-address {
-    margin: 2% 0 2%;
-}
-
-.address-editor {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 30%;
-
-}
-
-.edit-choice {
-    display: flex;
-    flex-direction: row;
-    
-}
-
-u.edit {
-    margin-right: 10px;
-    color: rgb(117, 172, 255);
-}
-
-u.delete {
-    margin-left: 10px;
-    color: rgb(117, 172, 255);
-}
-
-.set-default {
-    border: 2px solid rgb(148, 148, 148);
-    background-color: rgb(255, 255, 255);
-    color: rgb(148, 148, 148);
-    padding: 1% 5% 1%;
-}
-
-.address-status {
-
-    margin: 2% 0 2%;
-}
-
-.address-status strong {
-    border: 2px solid rgb(117, 172, 255);
-    color: rgb(117, 172, 255);
-    font-size: 15px;
-    padding: 0.5% 1% 0.5%;
-}
-/* ถึงตรงนี้ */
-
-.space-content {
+.content-wrappper .space-content {
     width: 22%;
     background-color: rgb(255, 255, 255);
     

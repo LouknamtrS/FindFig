@@ -1,12 +1,61 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import "./Address.css";
 import Nav from "../../components/Nav/Nav";
-import AddAddress from "../../components/AddAddress";
+import AddAddress from "../../components/icon/AddAddress";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import UserAdress from "../../components/Address-comp/UserAddress";
 
 function Address() {
-    const [popUp, setPopUp] = useState(false);
-    //const [valus, setValue] = useState();
+    const [addPopUp, setAddPopUp] = useState(false);
+    const [showAddress, setShowAddress] = useState(false); 
+    const [user, setUser] = useState();
+    const [userData, setUserData] = useState();
+    const [receiverName, setReceiverName] = useState();
+    const [tel, setTel] = useState();
+    const [address, setAddress] = useState();
+    const navigate = useNavigate();
+    const userEmail = window.localStorage.getItem("userEmail");
+    useEffect(() => {
+        axios.get('http://localhost:5000/finduser')
+        .then((response) => {
+        for (let i = 0; i < response.data.length; i++) {
+            if (response.data[i].email === userEmail) {
+                setUser(response.data[i]);
+                break;
+            }
+        }})
+        .catch((err) => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/getUserForAddress", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                
+            },
+            body: JSON.stringify({
+                email: userEmail
+            })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.UserAddresses != undefined) {
+                setReceiverName(data.UserAddresses.receiverName);
+                setTel(data.UserAddresses.tel);
+                setAddress(data.UserAddresses.address);
+            }
+            
+            
+            setUserData(data);
+        })
+        
+    }, []);
+
     return (
         <div>
             <div class="address-wrapper">
@@ -18,69 +67,81 @@ function Address() {
                         cart="https://cdn.discordapp.com/attachments/787359617280770051/1183513819981549639/2.png?ex=65889c23&is=65762723&hm=db11b00f36b56189d04437dad86744125c2456a9d7e4b7e95cc617f33e2e8efb&"
                     ></Nav>
                 </header>
-                <div class="content-wrappper">
-                    <div class="sidebar-content">
-                        <button class="sidebtn home">
-                            <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185529929153138728/icon__home_.png?ex=658ff1c9&is=657d7cc9&hm=8ab85dec9fc167fdb28f2875cfdf70df02a432049a73e85e6221d8dafd9f592c&"></img>
-                            home
-                        </button>
-                        
-                        <button class="sidebtn showcase">
-                            <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185529928947609610/Showcase_icon_1.png?ex=658ff1c9&is=657d7cc9&hm=7f817925edcdb126f1b960b5f41f7000e255afdd49757f2be7d79af294e2efcd&"></img>
-                            showcase
-                        </button>
-                        <button class="sidebtn sell">
-                            <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185529928591085629/icon__money_icon_.png?ex=658ff1c9&is=657d7cc9&hm=93e82c6f622ab7bf5da33f6f9950bf30c37bd75767e8bd29e45566d95bca225a&"></img>
-                            sell
-                        </button>
-                    </div>
+            
+            <div className="flex">
+            <div style={{position:"relative", paddingLeft:"40px"}}>
+            <div className="nav-index">
+            <a href="/">
+              <div className="nav-menu-item">
+                <div className="flex centerY">
+                        <img className="icon-nav-index" src='https://cdn.discordapp.com/attachments/787359617280770051/1185561359820271638/16.png?ex=65900f0e&is=657d9a0e&hm=2f8e9d7eba40fd0e42fcb16e15e7f5cefa903b4d6c772842de1a23da6879e656&' alt="home" />
+                    
+                </div>
+                <div style={{paddingLeft: "15px"}}>Home</div>
+              </div>
+              </a>
+            <a href="/account">
+              <div  className="nav-menu-item" >
+                <div className="flex centerY">
+                    
+                        <img className="icon-nav-index" src='https://cdn.discordapp.com/attachments/787359617280770051/1185561360084516884/17.png?ex=65900f0e&is=657d9a0e&hm=2f00dae461fd86c9ca1e2b28e2afa51ec1f628cc08c73f50c84289f8ce2142f2&' alt="showcase" />
+                   
+                </div>
+                <div style={{paddingLeft: "15px"}}>Account</div>
+              </div>
+              </a>
+              <a href="/address">
+              <div style={{backgroundColor:"#4636FC"}} className="nav-menu-item" >
+                <div className="flex centerY">
+                    
+                        <img className="icon-nav-index" src='https://cdn.discordapp.com/attachments/787359617280770051/1186487348813373470/11.png?ex=65936d73&is=6580f873&hm=ae836c844c07618dac37804c6f271983ecf62a8255417bf8b59270af84a9c4fd&' alt="showcase" />
+                   
+                </div>
+                <div style={{paddingLeft: "15px", color:"white"}}>Address</div>
+              </div>
+               </a>
+                <a href="/sell">
+              <div  className="nav-menu-item" >
+                <div className="flex centerY">
+                        <img className="icon-nav-index"  src='https://cdn.discordapp.com/attachments/787359617280770051/1185561360730435634/13.png?ex=65900f0f&is=657d9a0f&hm=458beb0055830d6ccd32bf030c9806d234de580a010118712da6dda62ce2db25&' alt="sell" />
+                </div>
+                <div  style={{position:"absolute", paddingLeft:"40px"}}>Sell</div>
+              </div>
+              </a>
+            </div>
+        </div>
+                <div class="content-wrappper" id="mainbody-address">
+                    
                     <div class="main-content">
                         <div class="main-header">
                             My Address
-                            <button class="add-btn" onClick={() => setPopUp(true)}>
+                            <button class="add-btn" onClick={async () => {
+                                    navigate("/address", {state: user});
+                                    setAddPopUp(true);
+                                }
+                            }>
                                 <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185630381899255951/Plus-icon.png?ex=65904f56&is=657dda56&hm=1bac260712735a13c2436dd6984a82f3b322fd79916f71d75680bf8e2cf6c1c9&"></img>
-                                Add Address
+                                Add
                             </button>
                         </div>
                         <div class="line"></div>
                         
                         {/* สำหรับเอาไปทำ component */}
-                        <div class="adress-content">
-                            <div class="address-field">
-                                <div class="address-info">
-                                    <div class="user-info">
-                                        <div class="receiver-name">
-                                            K MALAI
-                                        </div>
-                                        <div class="tel">
-                                            Tel. 062-398-8465
-                                        </div>
-                                    </div>
-                                    <div class="user-address">
-                                        17/4 Village No.5 Bamroongrat Road, Pibulsongkram Sub-district, Muang District, Bangkok, 10400.
-                                    </div>
-                                </div>
-                                <div class="address-editor">
-                                    <div class="edit-choice">
-                                        <u class="edit">Edit</u>
-                                        <u class="delete">Delete</u>
-                                    </div>
-                                    <button class="set-default">Set Default</button>
-                                </div>
-                            </div>
-                            <div class="address-status"><strong>Default</strong></div>
-                            <div class="line"></div>
-                        </div>
-                        {/* ถึงตรงนี้ */}
-                        
+                        <UserAdress 
+                            receiverName={receiverName} 
+                            tel={tel} 
+                            address={address}
+                        ></UserAdress>
                         
                     </div>
                     <div class="space-content">
                         
                     </div>
                 </div>
+            </div> 
             </div>
-            <AddAddress trigger={popUp} setTrigger={setPopUp}></AddAddress>
+            
+            <AddAddress trigger={addPopUp} setTrigger={setAddPopUp} userData={userData}></AddAddress>
         </div>
     );
 }
