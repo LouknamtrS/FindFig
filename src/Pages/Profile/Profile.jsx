@@ -25,7 +25,7 @@ export default function Profile() {
 
 
    const logOut=()=>{
-        window.localStorage.clear();
+        
         window.location.href="/";
     }
     return (

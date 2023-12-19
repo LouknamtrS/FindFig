@@ -7,46 +7,6 @@ import UserAdress from "../../components/Address-comp/UserAddress";
 import AddAddress from "../../components/AddAddress";
 
 function Cart(){
-    const [addPopUp, setAddPopUp] = useState(false);
-    const [userData, setUserData] = useState();
-    const [receiverName, setReceiverName] = useState();
-    const [tel, setTel] = useState();
-    const [address, setAddress] = useState();
-
-    const userEmail = window.localStorage.getItem("userEmail");
-
-    useEffect(() => {
-        fetch("http://localhost:5000/getUserForAddress", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                
-            },
-            body: JSON.stringify({
-                email: userEmail
-            })
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data.UserAddresses);
-<<<<<<< Updated upstream
-            setReceiverName(data.UserAddresses[0].receiverName);
-            setTel(data.UserAddresses[0].tel);
-            setAddress(data.UserAddresses[0].address);            
-=======
-            setReceiverName(data.UserAddresses.receiverName);
-            setTel(data.UserAddresses.tel);
-            setAddress(data.UserAddresses.address);            
->>>>>>> Stashed changes
-            setUserData(data);
-        })
-        
-    }, []);
-    
-
-
     return(
         <div id="wrapper">
              <header id="header">

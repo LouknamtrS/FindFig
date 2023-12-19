@@ -8,64 +8,8 @@ import axios from "axios";
 import UserAdress from "../../components/Address-comp/UserAddress";
 
 function Address() {
-    const [addPopUp, setAddPopUp] = useState(false);
-    const [showAddress, setShowAddress] = useState(false); 
-    const [user, setUser] = useState();
-    const [userData, setUserData] = useState();
-    const [receiverName, setReceiverName] = useState();
-    const [tel, setTel] = useState();
-    const [address, setAddress] = useState();
-    const navigate = useNavigate();
-    
-
-    const userEmail = window.localStorage.getItem("userEmail");
-
-
-    useEffect(() => {
-        axios.get('http://localhost:5000/finduser')
-        .then((response) => {
-        for (let i = 0; i < response.data.length; i++) {
-            if (response.data[i].email === userEmail) {
-                setUser(response.data[i]);
-                break;
-            }
-        }})
-        .catch((err) => console.log(err));
-    }, []);
-
-    useEffect(() => {
-        fetch("http://localhost:5000/getUserForAddress", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                
-            },
-            body: JSON.stringify({
-                email: userEmail
-            })
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.UserAddresses != undefined) {
-<<<<<<< Updated upstream
-                setReceiverName(data.UserAddresses[0].receiverName);
-                setTel(data.UserAddresses[0].tel);
-                setAddress(data.UserAddresses[0].address);
-=======
-                setReceiverName(data.UserAddresses.receiverName);
-                setTel(data.UserAddresses.tel);
-                setAddress(data.UserAddresses.address);
->>>>>>> Stashed changes
-            }
-            
-            
-            setUserData(data);
-        })
-        
-    }, []);
-
+    const [popUp, setPopUp] = useState(false);
+    //const [valus, setValue] = useState();
     return (
         <div>
             <div class="address-wrapper">
@@ -108,11 +52,33 @@ function Address() {
                         <div class="line"></div>
                         
                         {/* สำหรับเอาไปทำ component */}
-                        <UserAdress 
-                            receiverName={receiverName} 
-                            tel={tel} 
-                            address={address}
-                        ></UserAdress>
+                        <div class="adress-content">
+                            <div class="address-field">
+                                <div class="address-info">
+                                    <div class="user-info">
+                                        <div class="receiver-name">
+                                            K MALAI
+                                        </div>
+                                        <div class="tel">
+                                            Tel. 062-398-8465
+                                        </div>
+                                    </div>
+                                    <div class="user-address">
+                                        17/4 Village No.5 Bamroongrat Road, Pibulsongkram Sub-district, Muang District, Bangkok, 10400.
+                                    </div>
+                                </div>
+                                <div class="address-editor">
+                                    <div class="edit-choice">
+                                        <u class="edit">Edit</u>
+                                        <u class="delete">Delete</u>
+                                    </div>
+                                    <button class="set-default">Set Default</button>
+                                </div>
+                            </div>
+                            <div class="address-status"><strong>Default</strong></div>
+                            <div class="line"></div>
+                        </div>
+                        {/* ถึงตรงนี้ */}
                         
                         
                     </div>
