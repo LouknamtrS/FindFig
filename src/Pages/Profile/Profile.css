@@ -3,7 +3,11 @@
     max-width: 100%;
 }
 #main-profile{
+<<<<<<< HEAD
     max-width: 60%;
+=======
+    max-width: 70%;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     margin: 0 auto;
 }
 

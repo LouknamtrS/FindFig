@@ -1,11 +1,16 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import './Cart.css';
 import Nav from "../../components/Nav/Nav";
 import CartItems from "../../components/CartItems/CartItems";
 import UserAdress from "../../components/Address-comp/UserAddress";
+<<<<<<< HEAD
 import { useState,useEffect } from "react";
 import AddAdress from "../../components/icon/AddAddress";
 
+=======
+import AddAddress from "../../components/AddAddress";
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 
 function Cart(){
     const [addPopUp, setAddPopUp] = useState(false);
@@ -13,7 +18,13 @@ function Cart(){
     const [receiverName, setReceiverName] = useState();
     const [tel, setTel] = useState();
     const [address, setAddress] = useState();
+<<<<<<< HEAD
     const userEmail = window.localStorage.getItem("userEmail");
+=======
+
+    const userEmail = window.localStorage.getItem("userEmail");
+
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     useEffect(() => {
         fetch("http://localhost:5000/getUserForAddress", {
             method: "POST",
@@ -30,12 +41,25 @@ function Cart(){
         .then((response) => response.json())
         .then((data) => {
             console.log(data.UserAddresses);
+<<<<<<< HEAD
             setReceiverName(data.UserAddresses.receiverName);
             setTel(data.UserAddresses.tel);
             setAddress(data.UserAddresses.address);            
             setUserData(data);
         })
     }, []);
+=======
+            setReceiverName(data.UserAddresses[0].receiverName);
+            setTel(data.UserAddresses[0].tel);
+            setAddress(data.UserAddresses[0].address);            
+            setUserData(data);
+        })
+        
+    }, []);
+    
+
+
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     return(
         <div id="wrapper">
              <header id="header">
@@ -49,6 +73,7 @@ function Cart(){
                 <div className="layoutmain">
                 <div id="content" className="large-12" role="main"></div>
                 { 
+<<<<<<< HEAD
                     receiverName != undefined ? 
                         <UserAdress 
                             receiverName={receiverName} 
@@ -68,6 +93,24 @@ function Cart(){
             </main>
             <AddAdress trigger={addPopUp} setTrigger={setAddPopUp}></AddAdress>
     
+=======
+                    window.localStorage.getItem("userReceiverName") !== null ? 
+                        <UserAdress 
+                            receiverName={window.localStorage.getItem("userReceiverName")} 
+                            tel={window.localStorage.getItem("userTel")} 
+                            address={window.localStorage.getItem("userAddress")}
+                        ></UserAdress> 
+                    : 
+                    <div className="warning-zone">
+                        <button className="add-address-from-cart" onClick={() => setAddPopUp(true)}></button>
+                    </div>
+                }
+                
+                <CartItems></CartItems>
+                </div>
+            </main>
+            <AddAddress trigger={addPopUp} setTrigger={setAddPopUp} userData={userData}></AddAddress>
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
         </div>
 
 

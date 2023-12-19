@@ -2,10 +2,14 @@ import React, { useContext } from "react";
 import './Item.css';
 import { Link } from "react-router-dom";
 import { ShopContext } from "./ShopContext/ShopContext";
+<<<<<<< HEAD
 import UserAdress from "./Address-comp/UserAddress";
 import AddAdress from "./icon/AddAddress";
 
 
+=======
+
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 const Item = (props) => {
   const { addToCart } = useContext(ShopContext);
 

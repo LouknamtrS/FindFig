@@ -3,7 +3,10 @@ import { useEffect,useState } from "react";
 import "./ProductDisplay.css";
 import Nav from "../../components/Nav/Nav";
 import { ShopContext } from "../../components/ShopContext/ShopContext";
+<<<<<<< HEAD
 import ImageSlider from "../../components/ImageSlider";
+=======
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 
 
 const ProductDisplay = ({ product }) => { // Destructure directly
@@ -26,6 +29,7 @@ const ProductDisplay = ({ product }) => { // Destructure directly
     prevArrow: <div className="slick-prev">Previous</div>,
     nextArrow: <div className="slick-next">Next</div>,
   };
+  
 
   const handleRemoveQuantity = () => {
    if(quantity>1){

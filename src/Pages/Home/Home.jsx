@@ -61,6 +61,10 @@ const Logout=()=>{
   window.localStorage.removeItem("userReceiverName");
   window.localStorage.removeItem("userTel");
   window.localStorage.removeItem("userAddress");
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
   navigate('/login')
 
 

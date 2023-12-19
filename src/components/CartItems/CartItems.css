@@ -1,4 +1,11 @@
 
+<<<<<<< HEAD
+=======
+#mainbody {
+    max-width: 980px;
+    margin: 0 auto;
+}
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 .layoutmain{
     padding: 10px;
 }
@@ -68,8 +75,13 @@ img {
 }
 .boxcart {
     background: #fff;
+<<<<<<< HEAD
 
 
+=======
+    padding: 10px 0;
+    position: fixed;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     bottom: 0;
     display: flex;
     justify-content: center !important;
@@ -98,6 +110,7 @@ img {
 }
 .cartitems-format-main{
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: 0fr 5fr 1fr 1fr 1fr 0.5fr;
     align-items: center;
     gap: 20px;
@@ -106,6 +119,15 @@ img {
     font-size: 18px;
     align-items: flex-start;
 
+=======
+    grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+    padding: 20px 0px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600px;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 }
 .cartitems-format{
     font-size: 17px;
@@ -120,11 +142,14 @@ img {
 
     cursor: pointer;
 }
+<<<<<<< HEAD
 .cart-remove:hover{
     transform: scale(1.05);
     transition: all 1s ease;
     cursor: pointer;
 }
+=======
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 .cartitems-quantity{
     width: 64px;
     border: none;

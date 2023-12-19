@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import './CartItems.css';
 import { ShopContext } from "../ShopContext/ShopContext";
 import remove_icon from '../Assets/remove.png';
+<<<<<<< HEAD
 import PopupCheckout from "../../components/PopupCheckout"; 
 import axios from "axios";
 const CartItems = () => {
@@ -67,6 +68,27 @@ const CartItems = () => {
         <h4></h4>
       </div>
 
+=======
+
+const CartItems = () => {
+  const {getTotalCartAmount, data_products, removeFromCart } = useContext(ShopContext);
+  const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const [cartItems, setCartItems] = useState(storedCartItems);
+
+  console.log(cartItems);
+  console.log(data_products);
+
+  return (
+    <div className="cartitems">
+      <div className="cartitems-format-main">
+        <p>Items</p>
+        <p>Titles</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+        <p>Remove</p>
+      </div>
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     
       {data_products && data_products.length > 0 ? (
         data_products.map((e) => {
@@ -75,9 +97,15 @@ const CartItems = () => {
               <div key={e.id}>
                 <div className="cartitems-format cartitems-format-main">
                   <img src={e.thumb} alt="" className="cart-product-icon" />
+<<<<<<< HEAD
                   <p >{e.name}</p>
                   <p >{e.price} ฿</p>
                   <p><button className="cartitems-quantity" >{cartItems[e.id]}</button></p>
+=======
+                  <p>{e.name}</p>
+                  <p>{e.price}THB</p>
+                  <button className="cartitems-quantity">{cartItems[e.id]}</button>
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
                   <p>{e.price * cartItems[e.id]}</p>
                   <p><img  src={remove_icon} onClick={() => { removeFromCart(e.id) }} alt="" className="cart-remove"/></p>
                 </div>
@@ -113,15 +141,26 @@ const CartItems = () => {
         </div>
         <div style={{height:"15px"}}></div>
 
+<<<<<<< HEAD
       
         <div className="boxcart">
             <a><button className="btn-cart button-28" type="button" onClick={handleClick}>check out</button></a>
         </div>
 
         <PopupCheckout trigger={buttonPopup} setTrigger={setButtonPopup}></PopupCheckout>
+=======
+        <div style={{height:"150px"}}></div>
+        <div className="boxcart">
+            <a href="/checkout"><button className="btn-cart button-28" type="button">check out</button></a>
+        </div>
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
   </div>
   
   );
 };
 
+<<<<<<< HEAD
 export default CartItems;
+=======
+export default CartItems;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff

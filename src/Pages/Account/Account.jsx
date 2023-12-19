@@ -12,6 +12,7 @@ import editprofile from '../../components/Assets/editprofile.png';
 import settingacc from '../../components/Assets/setting.png';
 import sellicon from '../../components/Assets/sell.png';
 function Account(){
+<<<<<<< HEAD
     const location = useLocation();
     const [userData, setUserdata] = useState({});
     const [profileImage, setProfileImage] = useState(null);
@@ -45,6 +46,17 @@ function Account(){
         window.localStorage.clear();
         window.location.href="/";
     }
+=======
+    axios.post('http://localhost:5000/userData', { token: window.localStorage.getItem("token") })
+    .then((res) => {
+      const data = res.data; // Use res.data instead of res.json()
+      console.log(data, 'userData');
+
+    })
+    .catch(error => {
+      console.error(error);
+    });
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
   
 
 

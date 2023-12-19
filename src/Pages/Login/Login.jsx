@@ -24,17 +24,24 @@ function Login() {
         console.log(password);
   
         if (data.status === 'ok') {
+<<<<<<< HEAD
+=======
+          alert("login successful");
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
           window.localStorage.setItem("userEmail",email)
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("IsloggedIn",true)
           window.location.href="/"; 
         }
+<<<<<<< HEAD
        else if(data.status === 'Invalid password'){
         alert("Invalid password");
        }
        else if(data.status === 'user not found'){
         alert("Email not found");
        }
+=======
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
       })
       .catch(error => {
         console.error(error);

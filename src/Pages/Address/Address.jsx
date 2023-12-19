@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./Address.css";
 import Nav from "../../components/Nav/Nav";
+<<<<<<< HEAD
 import AddAddress from "../../components/icon/AddAddress";
+=======
+import AddAddress from "../../components/AddAddress";
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserAdress from "../../components/Address-comp/UserAddress";
@@ -16,7 +20,15 @@ function Address() {
     const [tel, setTel] = useState();
     const [address, setAddress] = useState();
     const navigate = useNavigate();
+<<<<<<< HEAD
     const userEmail = window.localStorage.getItem("userEmail");
+=======
+    
+
+    const userEmail = window.localStorage.getItem("userEmail");
+
+
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     useEffect(() => {
         axios.get('http://localhost:5000/finduser')
         .then((response) => {
@@ -45,9 +57,15 @@ function Address() {
         .then((response) => response.json())
         .then((data) => {
             if (data.UserAddresses != undefined) {
+<<<<<<< HEAD
                 setReceiverName(data.UserAddresses.receiverName);
                 setTel(data.UserAddresses.tel);
                 setAddress(data.UserAddresses.address);
+=======
+                setReceiverName(data.UserAddresses[0].receiverName);
+                setTel(data.UserAddresses[0].tel);
+                setAddress(data.UserAddresses[0].address);
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
             }
             
             
@@ -132,6 +150,10 @@ function Address() {
                             tel={tel} 
                             address={address}
                         ></UserAdress>
+<<<<<<< HEAD
+=======
+                        
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
                         
                     </div>
                     <div class="space-content">
@@ -140,7 +162,10 @@ function Address() {
                 </div>
             </div> 
             </div>
+<<<<<<< HEAD
             
+=======
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
             <AddAddress trigger={addPopUp} setTrigger={setAddPopUp} userData={userData}></AddAddress>
         </div>
     );

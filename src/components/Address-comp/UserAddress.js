@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import './UserAddress.css';
+<<<<<<< HEAD
 import EditAddress from "../icon/EditAddress.";
+=======
+import EditAddress from '../EditAddress';
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 
 function UserAdress(props){
     const [editPopUp, setEditPopUp] = useState(false);
@@ -29,10 +33,16 @@ function UserAdress(props){
             
             console.log(data);
             if (data.UserAddresses != undefined) {
+<<<<<<< HEAD
                 console.log(data.UserAddresses);
                 setReceiverName(data.UserAddresses.receiverName);
                 setTel(data.UserAddresses.tel);
                 setAddress(data.UserAddresses.address);
+=======
+                setReceiverName(data.UserAddresses[0].receiverName);
+                setTel(data.UserAddresses[0].tel);
+                setAddress(data.UserAddresses[0].address);
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
             }
             
             //setUserData(data);            
@@ -73,10 +83,14 @@ function UserAdress(props){
     ) ? (
         <>
             <div className="address-content">
+<<<<<<< HEAD
                <div style={{height:"5px"}}></div>
                 <hr></hr>
                 <div className="address-field">
                    
+=======
+                <div className="address-field">
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
                     <div className="address-info">
                         <div className="user-info">
                             <div className="receiver-name">

@@ -1,7 +1,12 @@
 .address-content {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     font-size: 17px;
+=======
+    margin: 3% 0 3%;
+    font-size: 20px;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     width: 100%;
 }
 

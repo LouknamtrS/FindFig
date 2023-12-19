@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+=======
+.add-address-from-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    margin: 1% 0 1% 0;
+}
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff

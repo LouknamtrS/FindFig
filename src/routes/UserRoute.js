@@ -10,6 +10,7 @@ const JWT_SECRET ="sadfghjkl;liuytredfghjklkjhgfxcvbnm,wesrdtfyguhijoklpjhjgfdgh
 
 router.route("/register").post(async(req, res) => {
     const {username, email, password} = req.body;
+<<<<<<< HEAD
     const encryptedPassword = await bcrypt.hash(password,10);
     try{
         const oldUser = await UserModel.findOne({email});
@@ -26,6 +27,24 @@ router.route("/register").post(async(req, res) => {
     }catch(err){
         res.send({status:"error"});
     }
+=======
+   const encryptedPassword = await bcrypt.hash(password,10);
+   try{
+    const oldUser = await UserModel.findOne({email});
+    if(oldUser){
+        return res.json({err:"user existed"});
+    }
+    await UserModel.create({
+        username,
+        email,
+        password: encryptedPassword,
+        
+    });
+    res.send({status:"ok"});
+   }catch(err){
+    res.send({status:"error"});
+   }
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
 
 
 });
@@ -77,6 +96,10 @@ router.route("/finduser").get((req,res)=>{
 
 router.route("/addAddress").post(async (req, res) => {
     const {email, receiverName, tel, address} = req.body;
+<<<<<<< HEAD
+=======
+    console.log(email);
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
     try {
         await UserModel.updateOne({email: email}, {
             $addToSet: { 
@@ -87,6 +110,11 @@ router.route("/addAddress").post(async (req, res) => {
                 }
             }
         }, {upsert: true});
+<<<<<<< HEAD
+=======
+        // const userInfo = await UserModel.findOne({email: email});
+        // console.log("this is userInfo ", userInfo);
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
         return res.json({status: "ok", data: "updated"});
     } catch (error) {
         return res.json({status: "error", data: error});
@@ -104,6 +132,11 @@ router.route("/editAddress").post(async (req, res) => {
                 address: address, 
             }
         });
+<<<<<<< HEAD
+=======
+        // const userInfo = await UserModel.findOne({email: email});
+        // console.log("this is userInfo ", userInfo);
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
         return res.json({status: "ok", data: "updated"});
     } catch (error) {
         return res.json({status: "error", data: error});
@@ -119,6 +152,7 @@ router.route("/getUserForAddress").post(async (req, res) => {
     .catch(err=> res.json(err))
 });
 
+<<<<<<< HEAD
 router.route("/deleteAccount").post(async (req, res) => {
     const {email} = req.body;
     UserModel.deleteOne({email: email})
@@ -143,3 +177,16 @@ router.route("/updateUser").post(async (req, res) => {
 
 
 module.exports = router;
+=======
+router.route("/deleteUserAddress").post(async (req, res) => {
+    const {email} = req.body;
+    UserModel.remove({email: email})
+    .then(user=> {
+        res.json(user)
+    })
+    .catch(err=> res.json(err))
+});
+
+
+module.exports = router;
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff

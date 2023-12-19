@@ -18,7 +18,10 @@ import DelPage from "./Pages/DeletePage/Deletepage";
 
 function App() {
   const IsLoggedIn = window.localStorage.getItem("IsloggedIn")
+<<<<<<< HEAD
   
+=======
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
   return (
     <div>
       <BrowserRouter>
@@ -28,7 +31,11 @@ function App() {
           <Route path="/products/:productID" element={<Product />} />
           <Route path="/Sell" element={<SellPage />} />
           <Route path="/login" element={<Login />} />
+<<<<<<< HEAD
           <Route path="/register" element={<Signup />} />
+=======
+            <Route path="/register" element={<Signup />} />
+>>>>>>> 7f87dc3ce0f9aa6a8e4e2d9af7d43b81ad9c48ff
           <Route path="/ordercomplete" element={<OrderComplete />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
