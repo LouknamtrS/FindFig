@@ -78,6 +78,7 @@ export default function AddAdress(props){
         e.preventDefault();
         if (props.userData.UserAddresses != undefined) {
             UpdateData();
+<<<<<<< Updated upstream
             console.log("Update");
         }
         else {
@@ -87,6 +88,14 @@ export default function AddAdress(props){
         
         props.setTrigger(false);
         window.location.reload(false);
+=======
+        }
+        else {
+            InsertData();
+        }
+        window.location.reload(false);
+        props.setTrigger(false);
+>>>>>>> Stashed changes
         
     }
 

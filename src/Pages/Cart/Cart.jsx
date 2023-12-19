@@ -31,9 +31,15 @@ function Cart(){
         .then((response) => response.json())
         .then((data) => {
             console.log(data.UserAddresses);
+<<<<<<< Updated upstream
             setReceiverName(data.UserAddresses[0].receiverName);
             setTel(data.UserAddresses[0].tel);
             setAddress(data.UserAddresses[0].address);            
+=======
+            setReceiverName(data.UserAddresses.receiverName);
+            setTel(data.UserAddresses.tel);
+            setAddress(data.UserAddresses.address);            
+>>>>>>> Stashed changes
             setUserData(data);
         })
         
