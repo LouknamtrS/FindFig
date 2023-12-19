@@ -25,6 +25,7 @@ function Login() {
   
         if (data.status === 'ok') {
           alert("login successful");
+          window.localStorage.setItem("userEmail",email)
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("IsloggedIn",true)
           window.location.href="/"; 
