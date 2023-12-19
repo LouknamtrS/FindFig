@@ -53,6 +53,10 @@ export default function () {
 const navigate = useNavigate()
 const Logout=()=>{
   window.localStorage.removeItem("isLogedIn");
+  window.localStorage.removeItem("userReceiverName");
+  window.localStorage.removeItem("userTel");
+  window.localStorage.removeItem("userAddress");
+  
   navigate('/login')
 
 

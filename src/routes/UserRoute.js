@@ -20,7 +20,7 @@ router.route("/register").post(async(req, res) => {
         username,
         email,
         password: encryptedPassword,
-        cart,
+        
     });
     res.send({status:"ok"});
    }catch(err){
@@ -63,6 +63,75 @@ router.route("/userData").post(async(req,res)=>{
     }catch(err){
 
     }
+});
+
+
+router.route("/finduser").get((req,res)=>{
+    UserModel.find()
+    .then(users=> {
+        console.log(users)
+        res.json(users)
+    })
+    .catch(err=> res.json(err))
 })
+
+router.route("/addAddress").post(async (req, res) => {
+    const {email, receiverName, tel, address} = req.body;
+    console.log(email);
+    try {
+        await UserModel.updateOne({email: email}, {
+            $addToSet: { 
+                "UserAddresses": {
+                    receiverName: receiverName, 
+                    tel: tel, 
+                    address: address, 
+                }
+            }
+        }, {upsert: true});
+        // const userInfo = await UserModel.findOne({email: email});
+        // console.log("this is userInfo ", userInfo);
+        return res.json({status: "ok", data: "updated"});
+    } catch (error) {
+        return res.json({status: "error", data: error});
+    }
+});
+
+router.route("/editAddress").post(async (req, res) => {
+    const {email, receiverName, tel, address} = req.body;
+    console.log(email);
+    try {
+        await UserModel.updateOne({email: email}, {
+            "UserAddresses": {
+                receiverName: receiverName, 
+                tel: tel, 
+                address: address, 
+            }
+        });
+        // const userInfo = await UserModel.findOne({email: email});
+        // console.log("this is userInfo ", userInfo);
+        return res.json({status: "ok", data: "updated"});
+    } catch (error) {
+        return res.json({status: "error", data: error});
+    }
+});
+
+router.route("/getUserForAddress").post(async (req, res) => {
+    const {email} = req.body;
+    UserModel.findOne({email: email})
+    .then(user=> {
+        res.json(user)
+    })
+    .catch(err=> res.json(err))
+});
+
+router.route("/deleteUserAddress").post(async (req, res) => {
+    const {email} = req.body;
+    UserModel.remove({email: email})
+    .then(user=> {
+        res.json(user)
+    })
+    .catch(err=> res.json(err))
+});
+
 
 module.exports = router;

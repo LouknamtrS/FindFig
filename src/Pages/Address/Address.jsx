@@ -1,12 +1,59 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import "./Address.css";
 import Nav from "../../components/Nav/Nav";
 import AddAddress from "../../components/AddAddress";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import UserAdress from "../../components/Address-comp/UserAddress";
 
 function Address() {
-    const [popUp, setPopUp] = useState(false);
-    //const [valus, setValue] = useState();
+    const [addPopUp, setAddPopUp] = useState(false);
+    const [showAddress, setShowAddress] = useState(false); 
+    const [user, setUser] = useState();
+    const [userData, setUserData] = useState();
+    const navigate = useNavigate();
+
+    const userEmail = window.localStorage.getItem("userEmail");
+
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/finduser')
+        .then((response) => {
+        for (let i = 0; i < response.data.length; i++) {
+            if (response.data[i].email === userEmail) {
+                setUser(response.data[i]);
+                break;
+            }
+        }})
+        .catch((err) => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/getUserForAddress", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                
+            },
+            body: JSON.stringify({
+                email: userEmail
+            })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.UserAddresses);
+            window.localStorage.setItem("userReceiverName", data.UserAddresses.receiverName);
+            window.localStorage.setItem("userTel", data.UserAddresses.tel);
+            window.localStorage.setItem("userAddress", data.UserAddresses.address);
+            window.localStorage.setItem("AddressInfo", data);
+            setUserData(data);
+        })
+        
+    }, []);
+
     return (
         <div>
             <div class="address-wrapper">
@@ -37,41 +84,23 @@ function Address() {
                     <div class="main-content">
                         <div class="main-header">
                             My Address
-                            <button class="add-btn" onClick={() => setPopUp(true)}>
+                            <button class="add-btn" onClick={async () => {
+                                    navigate("/address", {state: user});
+                                    setAddPopUp(true);
+                                }
+                            }>
                                 <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185630381899255951/Plus-icon.png?ex=65904f56&is=657dda56&hm=1bac260712735a13c2436dd6984a82f3b322fd79916f71d75680bf8e2cf6c1c9&"></img>
-                                Add Address
+                                Add
                             </button>
                         </div>
                         <div class="line"></div>
                         
                         {/* สำหรับเอาไปทำ component */}
-                        <div class="adress-content">
-                            <div class="address-field">
-                                <div class="address-info">
-                                    <div class="user-info">
-                                        <div class="receiver-name">
-                                            K MALAI
-                                        </div>
-                                        <div class="tel">
-                                            Tel. 062-398-8465
-                                        </div>
-                                    </div>
-                                    <div class="user-address">
-                                        17/4 Village No.5 Bamroongrat Road, Pibulsongkram Sub-district, Muang District, Bangkok, 10400.
-                                    </div>
-                                </div>
-                                <div class="address-editor">
-                                    <div class="edit-choice">
-                                        <u class="edit">Edit</u>
-                                        <u class="delete">Delete</u>
-                                    </div>
-                                    <button class="set-default">Set Default</button>
-                                </div>
-                            </div>
-                            <div class="address-status"><strong>Default</strong></div>
-                            <div class="line"></div>
-                        </div>
-                        {/* ถึงตรงนี้ */}
+                        <UserAdress 
+                            receiverName={window.localStorage.getItem("userReceiverName")} 
+                            tel={window.localStorage.getItem("userTel")} 
+                            address={window.localStorage.getItem("userAddress")}
+                        ></UserAdress>
                         
                         
                     </div>
@@ -80,7 +109,7 @@ function Address() {
                     </div>
                 </div>
             </div>
-            <AddAddress trigger={popUp} setTrigger={setPopUp}></AddAddress>
+            <AddAddress trigger={addPopUp} setTrigger={setAddPopUp} userData={userData}></AddAddress>
         </div>
     );
 }

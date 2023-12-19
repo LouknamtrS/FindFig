@@ -27,6 +27,7 @@ const ShopContextProvider = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
+  
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
@@ -40,19 +41,22 @@ const ShopContextProvider = (props) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (itemId) => {
-    // Find the product with the given itemId
-    const product = data_products.find((p) => p.id === itemId);
+  // const addToCart = (itemId) => {
+  //   // Find the product with the given itemId
+  //   const product = data_products.find((p) => p.id === itemId);
   
-    if (product) {
-      // Check if the incremented quantity exceeds the stock limit
-      if (cartItems[itemId] < product.stock) {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-      } else {
-        // Handle the case where the quantity exceeds the stock limit
-        console.log(`Cannot add more of ${product.name} to the cart. Stock limit reached.`);
-      }
-    }
+  //   if (product) {
+  //     // Check if the incremented quantity exceeds the stock limit
+  //     if (cartItems[itemId] < product.stock) {
+  //       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  //     } else {
+  //       // Handle the case where the quantity exceeds the stock limit
+  //       console.log(`Cannot add more of ${product.name} to the cart. Stock limit reached.`);
+  //     }
+  //   }
+  // };
+  const addToCart = (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
   
   const removeFromCart = (itemId) => {
