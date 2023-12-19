@@ -1,56 +1,18 @@
 import React, { useState, useEffect } from "react";
-import '../Pages/Address/Address';
 import './AddressPopUp.css';
 import { useLocation } from "react-router-dom";
 
-export default function AddAdress(props){
+function EditAddress(props){
     const [receiverName, setReceiverName] = useState();
     const [tel, setTel] = useState();
     const [address, setAddress] = useState();
 
-    
-
     const userEmail = window.localStorage.getItem("userEmail");
 
-    // useEffect(() => {
-    //     if (receiverName != null && tel != null && address != null) {
-    //         console.log(location);
-    //         setReceiverName(location.state.receiverName);
-    //         setTel(location.state.tel);
-    //         setAddress(location.state.address);
-    //     }
-    //     console.log(location);
-    // }, []);
-
-    
-
-    const InsertData = async() => {
+    const UpdateData = () => {
         //GetUser();
         console.log(receiverName, tel, address);
-        await fetch("http://localhost:5000/addAddress", {
-            method: "POST",
-            crossDomain: true,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                
-            },
-            body: JSON.stringify({
-                email: userEmail,
-                receiverName: receiverName, 
-                tel: tel, 
-                address: address,
-            })
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data.data);
-            setAddress(data.data);
-        })   
-    }
-
-    const UpdateData = async () => {
-        await fetch("http://localhost:5000/editAddress", {
+        fetch("http://localhost:5000/editAddress", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -70,31 +32,21 @@ export default function AddAdress(props){
             console.log(data.data);
             setAddress(data.data);
         })
+        
     }
-
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (props.userData.UserAddresses != undefined) {
-            UpdateData();
-            console.log("Update");
-        }
-        else {
-            InsertData();
-            console.log("Inssert");
-        }
         
+        UpdateData();
         props.setTrigger(false);
         window.location.reload(false);
-        
     }
-
-    
 
     function ClosePopUp() {
         props.setTrigger(false);
     }
+    
     return (props.trigger) ? (
         <div className="popup-panel">
             <div className="popup-address-frame">
@@ -102,7 +54,7 @@ export default function AddAdress(props){
                 {/* <form> */}
                     <div className="popup-address-field">
                         <div className="popup-address-header">
-                            <h1>New Address</h1>
+                            <h1>Edit Address</h1>
                         </div>
                         <div className="user-info">
                             <input 
@@ -135,7 +87,7 @@ export default function AddAdress(props){
                         <button className="submit-btn" type="submit">
                             Submit
                         </button>
-                        {/* <button className="submit-btn" type="button" onClick={() => InsertData()}>
+                        {/* <button className="submit-btn" type="button" onClick={() => UpdateData()}>
                             Submit
                         </button> */}
                     </div>
@@ -143,4 +95,6 @@ export default function AddAdress(props){
             </div>
         </div>
     ) : "";
-}
+};
+
+export default EditAddress;

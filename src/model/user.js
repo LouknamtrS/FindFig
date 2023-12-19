@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
     },
     profilePic:{
       type: String
+    },
+    UserAddresses: {
+      receiverName: String,
+      tel: String,
+      address: String,
     }
 })
 
