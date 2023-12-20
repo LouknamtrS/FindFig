@@ -106,9 +106,18 @@ export default function DelPage() {
                                 
                                 
                                 <form className="seller-input">
-                               
-                                    <h4 className="text-center header-style">{userData.username}</h4>
-                                    <h4 className="text-center header-style">{userData.email}</h4>
+                                  <h4 className="text-center">@{userData.username}</h4>
+                                    <h5 className=" header-style">
+                                      If you delete your account:
+                                      <ul>
+                                        <li>You will no longer be able to log in to FindFig with {userData.email} account </li>
+                                        <li>You will not be able to get refund on any items you have purchased</li>
+                                        <li>
+Your information, such as name, address, and phone number, will be permanently removed.
+</li>
+                                      </ul>
+                                      </h5>
+                                    
                              
                                     
                                         <div className="submit-form">
