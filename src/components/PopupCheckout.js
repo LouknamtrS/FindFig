@@ -55,9 +55,10 @@ function PopupCheckout(props){
   }, []);
     return(props.trigger)?(
         <div className="popup-check ">
-            <div className="popup-check-container col-p">
+            <div className="popup-check-container flex-col col-p">
                 <div className="popup-check-inner col-p">
                 <div className="check-header">Checkout detail</div>
+                
                 { 
                     receiverName != undefined ? 
                         <UserAdress 
@@ -66,20 +67,14 @@ function PopupCheckout(props){
                             address={address}
                         ></UserAdress> 
                     : 
-                    <div className="warning-zone">
-                        <button className="add-address-from-cart" onClick={() => setAddPopUp(true)}>
-                            <img src="https://cdn.discordapp.com/attachments/787359617280770051/1185630381899255951/Plus-icon.png?ex=65904f56&is=657dda56&hm=1bac260712735a13c2436dd6984a82f3b322fd79916f71d75680bf8e2cf6c1c9&"></img>
-                            Add Address
-                        </button>
+                    <div>
+                      <hr></hr>
+                        Please add Shipping Address
+                        <hr></hr>
                     </div>
+                    
                 }
-                
-                
-
-
-    <div className="cartitems-check">
-
-    
+                <div className="cartitems-check">
       {data_products && data_products.length > 0 ? (
         data_products.map((e) => {
           if (cartItems && cartItems[e.id] > 0) {
@@ -88,10 +83,9 @@ function PopupCheckout(props){
                 <div className="cartitems-format cartitems-format-main">
                   <img src={e.thumb} alt="" className="cart-product-icon-check" />
                   <p >{e.name}</p>
-                  <p >{e.price} ฿</p>
+                  <p ></p>
                   <p><button className="cartitems-quantity" >{cartItems[e.id]}</button></p>
                   <p>{e.price * cartItems[e.id]}</p>
-                 
                 </div>
               </div>
             );
@@ -126,18 +120,22 @@ function PopupCheckout(props){
         <div style={{height:"15px"}}></div>
 
         {/* <PopupCheckout trigger={buttonPopup} setTrigger={setButtonPopup}></PopupCheckout> */}
-  </div>
+      </div>
 
-                    <div className="close-popup-check">
-                        <button className="close-popup-check-btn button-6-2" onClick={handleCancel}>Cancel</button>   
-                        <button className="close-popup-check-btn button-5-2" onClick={handleClick}>Confirm</button>   
-                    </div>
-                    
-                </div> 
+         <div className="close-popup-check">
+            <button className="close-popup-check-btn button-6-2" onClick={handleCancel}>Cancel</button>   
+             <button className="close-popup-check-btn button-5-2" onClick={handleClick}>Confirm</button>   
+          </div>
+          
+            </div>    
+             <div class="StyledReceipt"></div>
             </div>
+           
             <AddAdress trigger={addPopUp} setTrigger={setAddPopUp}></AddAdress>
         </div>
+        
     ) : "";
+    
 };
 
 export default PopupCheckout;
